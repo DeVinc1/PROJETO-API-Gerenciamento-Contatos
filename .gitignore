@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Ignorar arquivos com chaves e senhas sensíveis
+src/main/resources/application-secret-keys.properties
+
 ### STS ###
 .apt_generated
 .classpath
