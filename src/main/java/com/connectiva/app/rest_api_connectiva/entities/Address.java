@@ -1,7 +1,14 @@
 package com.connectiva.app.rest_api_connectiva.entities;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tabela_enderecos")
 public class Address {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String streetName;
     private int houseNumber;
