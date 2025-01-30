@@ -14,6 +14,8 @@ public class Address {
     private int houseNumber;
     private String postalCode;
 
+    @ManyToOne
+    @JoinColumn(name = "id_contato")
     private Contact contactAssociated;
 
     public Address(){
