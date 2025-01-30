@@ -1,4 +1,4 @@
-package com.connectiva.app.rest_api_connectiva.entities;
+package com.connectiva.app.rest_api_connectiva.model;
 
 
 import jakarta.persistence.*;
@@ -10,8 +10,14 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "nome_rua")
     private String streetName;
+
+    @Column(name = "numero_casa")
     private int houseNumber;
+
+    @Column(name = "codigo_CEP")
     private String postalCode;
 
     @ManyToOne

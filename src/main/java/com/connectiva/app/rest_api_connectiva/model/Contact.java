@@ -1,4 +1,4 @@
-package com.connectiva.app.rest_api_connectiva.entities;
+package com.connectiva.app.rest_api_connectiva.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -13,9 +13,17 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "nome")
     private String name;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "telefone")
     private String phoneNumber;
+
+    @Column(name = "data_nascimento")
     private LocalDate birthDate;
 
     public Contact() {
