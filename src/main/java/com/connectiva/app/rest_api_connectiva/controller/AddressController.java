@@ -20,10 +20,6 @@ public class AddressController {
         return addressService.findAllAddresses();
     }
 
-    @GetMapping("/todosComContato")
-    public List<Map<String, Object>> findAllAddressWithContactInfo(){
-        return addressService.findAllAddressWithContactInfo();
-    }
 }
 
 
