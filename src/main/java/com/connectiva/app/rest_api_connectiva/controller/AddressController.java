@@ -1,26 +1,28 @@
 package com.connectiva.app.rest_api_connectiva.controller;
 
 import com.connectiva.app.rest_api_connectiva.model.Address;
-import com.connectiva.app.rest_api_connectiva.repository.AddressRepository;
+import com.connectiva.app.rest_api_connectiva.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/v2/enderecos")
 public class AddressController {
 
     @Autowired
-    private AddressRepository addressRepository;
+    private AddressService addressService;
 
-    @GetMapping("/all")
+    @GetMapping("/todos")
     public List<Address> getAllAddresses(){
+        return addressService.findAllAddresses();
+    }
 
-        return addressRepository.findAll();
-
+    @GetMapping("/todosComContato")
+    public List<Map<String, Object>> findAllAddressWithContactInfo(){
+        return addressService.findAllAddressWithContactInfo();
     }
 }
 
