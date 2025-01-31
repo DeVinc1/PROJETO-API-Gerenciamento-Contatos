@@ -28,4 +28,11 @@ public class ContactController {
     public Contact insertContact(@RequestBody Contact contact){
         return contactService.saveNewContact(contact);
     }
+
+    @PutMapping(value = "/atualizar/{id}")
+    public Contact updateContact(@RequestBody Contact contact, @PathVariable Long id){
+        return contactService.updateFullContact(contact, id);
+    }
+
+
 }
