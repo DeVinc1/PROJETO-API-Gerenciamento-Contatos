@@ -34,5 +34,10 @@ public class ContactController {
         return contactService.updateFullContact(contact, id);
     }
 
+    @PatchMapping(value = "/editar/{id}")
+    public Contact editContact(@RequestBody Contact contact, @PathVariable Long id){
+        return contactService.updatePartialContact(contact, id);
+    }
+
 
 }
