@@ -19,11 +19,10 @@ public class AddressController {
         return addressService.findAllAddresses();
     }
 
-    @GetMapping(value = "/pesquisa/{id}")
+    @GetMapping(value = "/{id}")
     public Address getAddressById(@PathVariable Long id){
         return addressService.findAddressesById(id);
     }
-
 }
 
 
