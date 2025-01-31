@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/v2/enderecos")
@@ -18,6 +17,11 @@ public class AddressController {
     @GetMapping("/todos")
     public List<Address> getAllAddresses(){
         return addressService.findAllAddresses();
+    }
+
+    @GetMapping(value = "/pesquisa/{id}")
+    public Address getAddressById(@PathVariable Long id){
+        return addressService.findAddressesById(id);
     }
 
 }

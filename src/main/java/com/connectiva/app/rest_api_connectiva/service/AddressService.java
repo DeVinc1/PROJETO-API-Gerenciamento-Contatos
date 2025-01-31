@@ -5,11 +5,8 @@ import com.connectiva.app.rest_api_connectiva.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 public class AddressService {
@@ -19,6 +16,10 @@ public class AddressService {
 
     public List<Address> findAllAddresses() {
         return addressRepository.findAll();
+    }
+
+    public Address findAddressesById(Long id) {
+        return addressRepository.findById(id).get();
     }
 
 
