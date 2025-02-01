@@ -23,6 +23,11 @@ public class AddressController {
     public Address getAddressById(@PathVariable Long id){
         return addressService.findAddressesById(id);
     }
+
+    @DeleteMapping(value = "/excluir/{id}")
+    public void deleteAddress(@PathVariable Long id){
+        addressService.removeAddress(id);
+    }
 }
 
 

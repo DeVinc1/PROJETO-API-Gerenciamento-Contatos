@@ -39,5 +39,10 @@ public class ContactController {
         return contactService.updatePartialContact(contact, id);
     }
 
+    @DeleteMapping(value = "excluir/{id}")
+    public void deleteContact(@PathVariable Long id){
+        contactService.removeContact(id);
+    }
+
 
 }

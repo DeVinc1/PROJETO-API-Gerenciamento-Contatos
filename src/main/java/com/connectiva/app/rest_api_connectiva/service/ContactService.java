@@ -1,6 +1,5 @@
 package com.connectiva.app.rest_api_connectiva.service;
 
-import com.connectiva.app.rest_api_connectiva.model.Address;
 import com.connectiva.app.rest_api_connectiva.model.Contact;
 import com.connectiva.app.rest_api_connectiva.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,32 +31,11 @@ public class ContactService {
     }
 
     public Contact updatePartialContact(Contact contact, Long id) {
-        Contact originalContact = this.findContactById(id);
-        Contact modifiedContact = contactRepository.save(contact);
-
+        return contactRepository.save(contact);
     }
 
-
-    public Contact nullPropertySkipper(Contact originalContact, Contact modifiedContact) {
-        modifiedContact.setId(originalContact.getId());
-        modifiedContact.getAddressesAssociated().addAll(originalContact.getAddressesAssociated());
-        if (modifiedContact.getName() == null) {
-            modifiedContact.setName(originalContact.getName());
-        }
-        if (modifiedContact.getEmail() == null) {
-            modifiedContact.setEmail(originalContact.getEmail());
-        }
-        if (modifiedContact.getPhoneNumber() == null) {
-            modifiedContact.setPhoneNumber(originalContact.getPhoneNumber());
-        }
-        if (modifiedContact.getBirthDate() == null) {
-            modifiedContact.setBirthDate(originalContact.getBirthDate());
-        }
-
-        for (Address address : originalContact.getAddressesAssociated()) {
-
-            if (modifiedContact.getAddressesAssociated().)
-        }
+    public void removeContact(Long id) {
+        contactRepository.deleteById(id);
     }
 
 
