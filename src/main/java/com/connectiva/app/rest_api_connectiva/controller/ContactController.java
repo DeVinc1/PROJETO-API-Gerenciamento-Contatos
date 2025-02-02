@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/v2/contatos")
@@ -35,8 +36,8 @@ public class ContactController {
     }
 
     @PatchMapping(value = "/editar/{id}")
-    public Contact editContact(@RequestBody Contact contact, @PathVariable Long id){
-        return contactService.updatePartialContact(contact, id);
+    public Contact updatePartialContact(@PathVariable Long id, @RequestBody Map<String, Object> patchData) {
+
     }
 
     @DeleteMapping(value = "excluir/{id}")
