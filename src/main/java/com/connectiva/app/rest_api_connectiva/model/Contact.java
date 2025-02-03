@@ -9,10 +9,6 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
-/**
- * Representa um contato no sistema.
- * Contém informações pessoais de nome, email, telefone, data de nascimento e associações a uma lista de endereços.
- */
 @Entity
 @Table(name = "tabela_contatos")
 public class Contact {
@@ -21,16 +17,16 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "telefone")
+    @Column(name = "telefone", nullable = false, unique = true)
     private String phoneNumber;
 
-    @Column(name = "data_nascimento")
+    @Column(name = "data_nascimento",nullable = false)
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "contactAssociated", cascade = CascadeType.ALL, orphanRemoval = true)

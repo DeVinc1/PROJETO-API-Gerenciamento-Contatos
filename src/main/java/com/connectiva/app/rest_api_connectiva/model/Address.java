@@ -4,10 +4,6 @@ package com.connectiva.app.rest_api_connectiva.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-/**
- * Representa um endereço associado a um contato no sistema.
- * Contém informações do nome da rua, número da casa, código postal e a referência ao contato relacionado.
- */
 
 @Entity
 @Table(name = "tabela_enderecos")
@@ -17,13 +13,13 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome_rua")
+    @Column(name = "nome_rua", nullable = false)
     private String streetName;
 
-    @Column(name = "numero_casa")
+    @Column(name = "numero_casa", nullable = false)
     private Integer houseNumber;
 
-    @Column(name = "codigo_CEP")
+    @Column(name = "codigo_CEP", nullable = false)
     private String postalCode;
 
     @ManyToOne
