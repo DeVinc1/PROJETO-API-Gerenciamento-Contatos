@@ -1,5 +1,6 @@
 package com.connectiva.app.rest_api_connectiva.service;
 
+import com.connectiva.app.rest_api_connectiva.model.Address;
 import com.connectiva.app.rest_api_connectiva.model.Contact;
 import com.connectiva.app.rest_api_connectiva.repository.ContactRepository;
 import com.connectiva.app.rest_api_connectiva.utils.RequestBodyPatcher;
@@ -39,7 +40,17 @@ public class ContactService {
     public Contact updatePartialContact(Contact contact, Long id) {
         Contact existingContact = findContactById(id);
         contact.setId(id);
-        return contactRepository.save(requestBodyPatcher.requestBodyPatcher(existingContact, contact));
+        Contact patchedContact = requestBodyPatcher.contactPatcher(existingContact, contact);
+
+        List<Address> uniqueAddresses = patchedContact.getAddressesAssociated().stream()
+                .distinct()
+                .toList();
+
+        patchedContact.setAddressesAssociated(uniqueAddresses);
+        contactRepository.save(patchedContact);
+
+        return this.findContactById(id);
+
     }
 
     public void removeContact(Long id) {
