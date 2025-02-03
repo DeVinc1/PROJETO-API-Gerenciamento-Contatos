@@ -23,7 +23,7 @@ public class AddressService {
     }
 
     public Address findAddressesById(Long id) {
-        return addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("ID não encontrado"));
+        return addressRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("ID" + id + "não encontrado"));
     }
 
     public void removeAddress(Long id) {

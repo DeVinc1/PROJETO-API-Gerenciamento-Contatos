@@ -27,7 +27,7 @@ public class ContactService {
     }
 
     public Contact findContactById(Long id) {
-        return contactRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("ID não encontrado"));
+        return contactRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("ID" + id + "não encontrado"));
     }
 
     public Contact saveNewContact(Contact contact) {
