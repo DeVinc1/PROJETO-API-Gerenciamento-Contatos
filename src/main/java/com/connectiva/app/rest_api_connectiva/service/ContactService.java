@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+/**
+ * Classe de serviço responsável pela lógica de negócios relacionada ao gerenciamento de contatos.
+ * Fornece métodos para realizar buscas, criações, atualizações (completas e parciais) e remoções de contatos.
+ */
 @Service
 public class ContactService {
 

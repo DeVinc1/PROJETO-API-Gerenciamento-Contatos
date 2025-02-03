@@ -11,6 +11,15 @@ import java.util.Objects;
 @Component
 public class RequestBodyPatcher {
 
+    /**
+     * Verifica se uma propriedade enviada é nula e, nesse caso, retorna o valor da propriedade original.
+     * Caso contrário, retorna o valor da propriedade enviada.
+     *
+     * @param <T> O tipo das propriedades sendo comparadas.
+     * @param originalProperty O valor original da propriedade.
+     * @param sentProperty O valor enviado da propriedade.
+     * @return O valor original (se o enviado for nulo) ou o valor enviado.
+     */
     public <T> T nullPropertySkipper(T originalProperty, T sentProperty){
         if(sentProperty == null){
             return originalProperty;
@@ -19,10 +28,13 @@ public class RequestBodyPatcher {
         }
     }
 
-    public Contact requestBodyPatcher(Contact existingContact, Contact sentContact){
-        return contactPatcher(existingContact, sentContact);
-    }
-
+    /**
+     * Corrige objeto Contact, combinando dados existentes e enviados, atualizando as propriedades e listas de endereços associadas.
+     *
+     * @param existingContact O objeto Contact existente.
+     * @param sentContact O objeto Contact enviado.
+     * @return O objeto Contact resultante com os dados combinados.
+     */
 
     public Contact contactPatcher(Contact existingContact, Contact sentContact){
 
@@ -39,6 +51,14 @@ public class RequestBodyPatcher {
         return sentContact;
     }
 
+    /**
+     * Mescla as propriedades do objeto Contato enviadas com as propriedades existentes,
+     * mantendo os valores originais caso as enviadas sejam nulas.
+     *
+     * @param existingContact O objeto Contact existente.
+     * @param sentContact O objeto Contact enviado.
+     * @return O objeto Contact com as propriedades mescladas.
+     */
     public Contact contactPropertyMerge(Contact existingContact, Contact sentContact){
         sentContact.setId(existingContact.getId());
         sentContact.setName(nullPropertySkipper(existingContact.getName(), sentContact.getName()));
@@ -49,6 +69,14 @@ public class RequestBodyPatcher {
         return sentContact;
     }
 
+    /**
+     * Atualiza as propriedades dos endereços enviados, mantendo os dados
+     * originais caso as propriedades enviadas sejam nulas.
+     *
+     * @param existingContact O objeto Contact com os endereços existentes.
+     * @param sentContact O objeto Contact com os endereços enviados.
+     * @return A lista de endereços enviados com as propriedades atualizadas.
+     */
     public List<Address> addressPropertyPatcher(Contact existingContact, Contact sentContact){
         List<Address> existingAddresses = existingContact.getAddressesAssociated();
         List<Address> sentAddresses = sentContact.getAddressesAssociated();
@@ -66,6 +94,14 @@ public class RequestBodyPatcher {
         return sentAddresses;
     }
 
+    /**
+     * Verifica e combina objetos Address de contato existentes e enviados,
+     * adicionando os endereços únicos (presentes apenas no existente) à lista consolidada.
+     *
+     * @param existingContact O objeto Contact com os endereços existentes.
+     * @param sentContact O objeto Contact com os endereços enviados.
+     * @return Uma lista de endereços únicos que estão apenas no contato existente.
+     */
     public List<Address> addressObjectMerge(Contact existingContact, Contact sentContact){
         List<Address> existingAddresses = existingContact.getAddressesAssociated();
         List<Address> sentAddresses = sentContact.getAddressesAssociated();

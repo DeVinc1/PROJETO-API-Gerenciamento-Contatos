@@ -9,6 +9,10 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
+/**
+ * Representa um contato no sistema.
+ * Contém informações pessoais de nome, email, telefone, data de nascimento e associações a uma lista de endereços.
+ */
 @Entity
 @Table(name = "tabela_contatos")
 public class Contact {

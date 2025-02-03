@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controlador REST responsável por gerir as operações relacionadas aos endereços.
+ * Disponibiliza endpoints para CRUD (Create, Read, Update, Delete).
+ */
 @RestController
 @RequestMapping("api/v2/enderecos")
 public class AddressController {
