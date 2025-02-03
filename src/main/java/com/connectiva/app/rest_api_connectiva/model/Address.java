@@ -57,9 +57,14 @@ public class Address {
     public void setHouseNumber(Integer houseNumber) {
         this.houseNumber = houseNumber;
     }
+
     public void setPostalCode(String postalCode) {
+        if (postalCode != null && !postalCode.matches("^\\d{5}-\\d{3}$")) {
+            throw new IllegalArgumentException("O CEP deve estar no formato 00000-000.");
+        }
         this.postalCode = postalCode;
     }
+
     public void setContactAssociated(Contact contactAssociated) {
         this.contactAssociated = contactAssociated;
     }

@@ -64,12 +64,21 @@ public class Contact {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setEmail(String email) {
+        if (email != null && !email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+            throw new IllegalArgumentException("Email deve seguir o formato exemplo@dominio.com.");
+        }
         this.email = email;
+
     }
     public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber != null && !phoneNumber.matches("^\\(\\d{2}\\)\\s?(9\\d{4}|\\d{4})-\\d{4}$")) {
+            throw new IllegalArgumentException("Telefone deve seguir o formato correto como (11) 91234-5678.");
+        }
         this.phoneNumber = phoneNumber;
     }
+
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
