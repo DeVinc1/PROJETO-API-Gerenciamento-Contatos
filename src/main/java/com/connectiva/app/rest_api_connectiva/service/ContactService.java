@@ -2,13 +2,12 @@ package com.connectiva.app.rest_api_connectiva.service;
 
 import com.connectiva.app.rest_api_connectiva.model.Contact;
 import com.connectiva.app.rest_api_connectiva.repository.ContactRepository;
-import com.connectiva.app.rest_api_connectiva.utils.ObjectPatcher;
+import com.connectiva.app.rest_api_connectiva.utils.RequestBodyPatcher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
+
 
 @Service
 public class ContactService {
@@ -17,7 +16,7 @@ public class ContactService {
     private ContactRepository contactRepository;
 
     @Autowired
-    private ObjectPatcher objectPatcher;
+    private RequestBodyPatcher requestBodyPatcher;
 
     public List<Contact> findAllContacts() {
         return contactRepository.findAll();
@@ -37,9 +36,10 @@ public class ContactService {
         return contactRepository.save(contact);
     }
 
-    public Contact updatePartialContact(Map<String, Object> patchData, Long id) {
-
-
+    public Contact updatePartialContact(Contact contact, Long id) {
+        Contact existingContact = findContactById(id);
+        contact.setId(id);
+        return contactRepository.save(requestBodyPatcher.requestBodyPatcher(existingContact, contact));
     }
 
     public void removeContact(Long id) {

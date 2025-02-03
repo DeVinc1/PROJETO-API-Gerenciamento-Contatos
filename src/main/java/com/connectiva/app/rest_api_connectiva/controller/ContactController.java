@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/v2/contatos")
@@ -17,6 +16,7 @@ public class ContactController {
 
     @GetMapping("/todos")
     public List<Contact> getAllContacts(){
+        System.out.println("aaaaa");
         return contactService.findAllContacts();
     }
 
@@ -36,8 +36,8 @@ public class ContactController {
     }
 
     @PatchMapping(value = "/editar/{id}")
-    public Contact updatePartialContact(@PathVariable Long id, @RequestBody Map<String, Object> patchData) {
-
+    public Contact updatePartialContact(@RequestBody Contact contact, @PathVariable Long id) {
+        return contactService.updatePartialContact(contact, id);
     }
 
     @DeleteMapping(value = "excluir/{id}")
