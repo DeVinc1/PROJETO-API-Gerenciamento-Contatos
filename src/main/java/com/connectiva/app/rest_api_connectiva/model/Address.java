@@ -10,13 +10,13 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "nome_rua")
     private String streetName;
 
     @Column(name = "numero_casa")
-    private int houseNumber;
+    private Integer houseNumber;
 
     @Column(name = "codigo_CEP")
     private String postalCode;
@@ -30,13 +30,13 @@ public class Address {
     }
 
     /*Getters*/
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public String getStreetName() {
         return streetName;
     }
-    public int getHouseNumber() {
+    public Integer getHouseNumber() {
         return houseNumber;
     }
     public String getPostalCode() {
@@ -47,13 +47,13 @@ public class Address {
     }
 
     /*Setters*/
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setStreetName(String streetName) {
         this.streetName = streetName;
     }
-    public void setHouseNumber(int houseNumber) {
+    public void setHouseNumber(Integer houseNumber) {
         this.houseNumber = houseNumber;
     }
     public void setPostalCode(String postalCode) {

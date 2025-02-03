@@ -38,7 +38,7 @@ public class Contact {
     }
 
     /* Getters */
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public String getName() {
@@ -58,7 +58,7 @@ public class Contact {
     }
 
     /* Setters */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setName(String name) {
