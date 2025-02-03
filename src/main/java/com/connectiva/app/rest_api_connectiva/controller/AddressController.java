@@ -2,7 +2,6 @@ package com.connectiva.app.rest_api_connectiva.controller;
 
 import com.connectiva.app.rest_api_connectiva.model.Address;
 import com.connectiva.app.rest_api_connectiva.service.AddressService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @RequestMapping("api/v2/enderecos")
 public class AddressController {
 
-    @Autowired
-    private AddressService addressService;
+    private final AddressService addressService;
+
+    public AddressController(AddressService addressService) {
+        this.addressService = addressService;
+    }
 
     @GetMapping("/todos")
     public List<Address> getAllAddresses(){
