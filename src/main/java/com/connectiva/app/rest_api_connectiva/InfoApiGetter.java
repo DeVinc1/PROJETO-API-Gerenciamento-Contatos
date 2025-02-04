@@ -49,7 +49,7 @@ public class InfoApiGetter {
               "status": "Online and Running",
               "version": "2.0",
               "description": "API RESTful to manage data in a contact database",
-              "documentation": "TBD"
+              "documentation": "https://projeto-connectiva-api-de-gerenciamento.onrender.com/swagger-ui/index.html"
             }""";
 
 }
