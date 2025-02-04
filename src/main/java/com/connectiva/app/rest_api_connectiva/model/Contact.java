@@ -1,6 +1,7 @@
 package com.connectiva.app.rest_api_connectiva.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -20,12 +21,15 @@ public class Contact {
     @Column(name = "nome", nullable = false)
     private String name;
 
+    @Schema(description = "Deve ter o formato email@dominio.extensao")
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
+    @Schema(description = "Deve ter o formato (XX) xxxx-xxxx ou (XX) 9xxxx-xxxx")
     @Column(name = "telefone", nullable = false, unique = true)
     private String phoneNumber;
 
+    @Schema(description = "Deve ter o formato AAAA-MM-DD")
     @Column(name = "data_nascimento",nullable = false)
     private LocalDate birthDate;
 

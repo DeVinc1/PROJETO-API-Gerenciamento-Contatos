@@ -2,6 +2,7 @@ package com.connectiva.app.rest_api_connectiva.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 
@@ -19,6 +20,7 @@ public class Address {
     @Column(name = "numero_casa", nullable = false)
     private Integer houseNumber;
 
+    @Schema(description = "Deve ter o formato XXXXX-XXX")
     @Column(name = "codigo_CEP", nullable = false)
     private String postalCode;
 

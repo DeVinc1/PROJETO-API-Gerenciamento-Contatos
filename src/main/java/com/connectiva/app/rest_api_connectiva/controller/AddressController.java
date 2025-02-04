@@ -3,7 +3,6 @@ package com.connectiva.app.rest_api_connectiva.controller;
 import com.connectiva.app.rest_api_connectiva.model.Address;
 import com.connectiva.app.rest_api_connectiva.service.AddressService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -38,13 +37,16 @@ public class AddressController {
             @ApiResponse(responseCode = "503", description = "A API está temporariamente fora de ar", content = @Content())
     })
     @GetMapping("/todos")
+
+
     public List<Address> getAllAddresses(){
         return addressService.findAllAddresses();
     }
 
+
     @Operation(description = "Busca um endereço específico pelo seu ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "O endereço foi encontrado com sucesso",
+            @ApiResponse(responseCode = "200", description = "O endereço com o ID especificado foi encontrado com sucesso",
                     content = @Content(mediaType = "application/json",
                             examples = @ExampleObject(
                                     name = "Resposta esperada da Requisição",
@@ -58,11 +60,12 @@ public class AddressController {
             @ApiResponse(responseCode = "503", description = "A API está temporariamente fora de ar", content = @Content())
     })
     @GetMapping(value = "/{id}")
-    public Address getAddressById(
-            @Parameter(description = "Número inteiro que referencia o ID na base de dados do endereço desejado", example = "1")
-            @PathVariable Long id){
+
+
+    public Address getAddressById(@PathVariable Long id){
         return addressService.findAddressesById(id);
     }
+
 
     @Operation(description = "Exclui um endereço pelo ID")
     @ApiResponses(value = {
@@ -72,12 +75,14 @@ public class AddressController {
             @ApiResponse(responseCode = "503", description = "A API está temporariamente fora de ar", content = @Content())
     })
     @DeleteMapping(value = "/excluir/{id}")
-    public void deleteAddress(
-            @Parameter(description = "Número inteiro que referencia o ID na base de dados do endereço desejado", example = "1")
-            @PathVariable Long id){
+
+
+    public void deleteAddress(@PathVariable Long id){
         addressService.removeAddress(id);
     }
 
+
+    /* Strings com JSONs exemplos */
     private static final String EXAMPLE_ALL_ADDRESSES = """
             [
                 {
