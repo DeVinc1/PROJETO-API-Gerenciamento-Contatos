@@ -37,7 +37,7 @@ public class InfoApiGetter {
         welcomeMessage.put("status", "Online and Running");
         welcomeMessage.put("version", "2.0");
         welcomeMessage.put("description", "API RESTful to manage data in a contact database");
-        welcomeMessage.put("documentation", "TBD");
+        welcomeMessage.put("documentation", "https://projeto-connectiva-api-de-gerenciamento.onrender.com/swagger-ui/index.html");
         return welcomeMessage;
     }
 
