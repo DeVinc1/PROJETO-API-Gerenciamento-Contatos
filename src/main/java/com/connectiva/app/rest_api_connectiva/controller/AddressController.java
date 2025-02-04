@@ -78,27 +78,29 @@ public class AddressController {
         addressService.removeAddress(id);
     }
 
-    private static final String EXAMPLE_ALL_ADDRESSES = "[\n" +
-            "    {\n" +
-            "        \"id\": 1,\n" +
-            "        \"streetName\": \"Avenida das Flores Rosas\",\n" +
-            "        \"houseNumber\": 256,\n" +
-            "        \"postalCode\": \"02456-010\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "        \"id\": 2,\n" +
-            "        \"streetName\": \"Rua da Paz\",\n" +
-            "        \"houseNumber\": 1055,\n" +
-            "        \"postalCode\": \"32888-256\"\n" +
-            "    }\n" +
-            "]";
+    private static final String EXAMPLE_ALL_ADDRESSES = """
+            [
+                {
+                    "id": 1,
+                    "streetName": "Avenida das Flores Rosas",
+                    "houseNumber": 256,
+                    "postalCode": "02456-010"
+                },
+                {
+                    "id": 2,
+                    "streetName": "Rua da Paz",
+                    "houseNumber": 1055,
+                    "postalCode": "32888-256"
+                }
+            ]""";
 
-    private static final String EXAMPLE_SINGLE_ADDRESS = "{\n" +
-            "    \"id\": 1,\n" +
-            "    \"streetName\": \"Avenida das Flores Rosas\",\n" +
-            "    \"houseNumber\": 256,\n" +
-            "    \"postalCode\": \"02456-010\"\n" +
-            "}";
+    private static final String EXAMPLE_SINGLE_ADDRESS = """
+            {
+                "id": 1,
+                "streetName": "Avenida das Flores Rosas",
+                "houseNumber": 256,
+                "postalCode": "02456-010"
+            }""";
 
 
 }
